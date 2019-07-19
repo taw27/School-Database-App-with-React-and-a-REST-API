@@ -57,6 +57,8 @@ db.sequelize
     console.error("Unable to connect to the database:", err);
   });
 
-const server = app.listen(app.get("port"), () => {
-  console.log(`Express server is listening on port ${server.address().port}`);
+db.sequelize.sync({ force: true }).then(() => {
+  const server = app.listen(app.get("port"), () => {
+    console.log(`Express server is listening on port ${server.address().port}`);
+  });
 });
