@@ -4,6 +4,7 @@
 const express = require("express");
 const morgan = require("morgan");
 const db = require("./models");
+const asyncErrorHandler = require("./asyncErrorHandler");
 
 // variable to enable global error logging
 const enableGlobalErrorLogging =
