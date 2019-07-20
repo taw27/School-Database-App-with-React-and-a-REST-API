@@ -1,4 +1,4 @@
-const asyncErrorHandler = async cb => {
+const asyncErrorHandler = cb => {
   return async (req, res, next) => {
     try {
       await cb(req, res, next);
