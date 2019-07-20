@@ -16,7 +16,7 @@ Key technologies used: Node.js, Express.js, bcryptjs, Express Validator, SQLite 
 
 **Note: this project is under progress**
 
-## Overview of the Provided Project Files by Tree House
+## Overview of Project Files Provided by Tree House
 
 Some of the important files provided by Tree House to aid in the project has been noted below:
 
