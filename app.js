@@ -54,7 +54,7 @@ db.sequelize
   .authenticate()
   .then(() => {
     console.log("Connection has been established successfully.");
-    return db.sequelize.sync({ force: true });
+    return db.sequelize.sync();
   })
   .then(() => {
     const server = app.listen(app.get("port"), () => {

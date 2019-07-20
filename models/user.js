@@ -35,10 +35,9 @@ module.exports = (sequelize, DataTypes) => {
         attributes: { exclude: ["password", "createdAt", "updatedAt"] },
         where: { emailAddress: { [Op.like]: email } }
       });
-      console.log(user);
       return user;
     } catch (err) {
-      console.log(err);
+      throw err;
     }
   };
 
