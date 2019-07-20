@@ -12,10 +12,7 @@ const authenticateUser = asyncErrorHandler(async (req, res, next) => {
   if (credentials) {
     console.log(credentials.name);
     const user = await User.getUserByEmail(credentials.name);
-    console.log(await User.findAll());
-
     if (user) {
-      console.log(user);
       const authenticated = await bcryptjs.compare(
         credentials.pass,
         user.get("password")
