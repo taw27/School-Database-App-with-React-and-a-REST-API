@@ -24,5 +24,6 @@ const createErrorByStatus = statusCode => {
 };
 
 module.exports = {
-  asyncErrorHandler
+  asyncErrorHandler,
+  createErrorByStatus
 };
