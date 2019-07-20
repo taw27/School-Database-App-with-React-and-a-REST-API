@@ -1,38 +1,38 @@
+# REST API (Tree house FSJS unit-09)
 
-# Full Stack JavaScript Techdegree v2 - REST API Project
+## Table of Contents
 
-## Overview of the Provided Project Files
+- [Description](#description)
+- [Overview of Project Files Provided by Tree House](#overview)
+- [Running Instructions](#running-instructions)
 
-We've supplied the following files for you to use: 
+## Description
 
-* The `seed` folder contains a starting set of data for your database in the form of a JSON file (`data.json`) and a collection of files (`context.js`, `database.js`, and `index.js`) that can be used to create your app's database and populate it with data (we'll explain how to do that below).
-* We've included a `.gitignore` file to ensure that the `node_modules` folder doesn't get pushed to your GitHub repo.
-* The `app.js` file configures Express to serve a simple REST API. We've also configured the `morgan` npm package to log HTTP requests/responses to the console. You'll update this file with the routes for the API. You'll update this file with the routes for the API.
-* The `nodemon.js` file configures the nodemon Node.js module, which we are using to run your REST API.
-* The `package.json` file (and the associated `package-lock.json` file) contain the project's npm configuration, which includes the project's dependencies.
-* The `RESTAPI.postman_collection.json` file is a collection of Postman requests that you can use to test and explore your REST API.
+The REST API will provide a way for users to administer a school database containing information about courses: users can interact with the database by retrieving a list of courses, as well as adding, updating and deleting courses in the database.
 
-## Getting Started
+In addition, the project require users to create an account and log-in to make changes to the database.
 
-To get up and running with this project, run the following commands from the root of the folder that contains this README file.
+Key technologies used: Node.js, Express.js, bcryptjs, Express Validator, SQLite and sequelizejs.
 
-First, install the project's dependencies using `npm`.
+**Note: this project is under progress**
 
-```
-npm install
+## Overview of the Provided Project Files by Tree House
 
-```
+Some of the important files provided by Tree House to aid in the project has been noted below:
 
-Second, seed the SQLite database.
+- The `seed` folder contains a starting set of data for the database in the form of a JSON file (`data.json`) and a collection of files (`context.js`, `database.js`, and `index.js`) that can be used to create the app's database and populate it with data
+- The `app.js` file configures Express to serve a simple REST API. It also configured the `morgan` npm package to log HTTP requests/responses to the console. **Note: it is just a starting point and I added to this file and other files with the routes and models for the API**
+- The `nodemon.js` file configures the nodemon Node.js module, which is used to run the REST API.
+- The `package.json` file (and the associated `package-lock.json` file) contain the project's npm configuration, which includes the some of the starting project dependencies.
+- The `RESTAPI.postman_collection.json` file is a collection of Postman requests that can be used to test and explore the REST API.
 
-```
-npm run seed
-```
+## Running Instructions
 
-And lastly, start the application.
+1. Download or clone the repository
+2. Open Terminal in the project directory
+3. Run `npm install` to install dependencies
+4. Run `npm run seed` to seed the SQLite database
+5. Run `npm start` to start the node application
+6. Use Postman to test the rest api routes at [http://localhost:5000/](http://localhost:5000)
 
-```
-npm start
-```
-
-To test the Express server, browse to the URL [http://localhost:5000/](http://localhost:5000/).
+**_Note: Requires Node.js and npm_**
