@@ -32,7 +32,7 @@ module.exports = (sequelize, DataTypes) => {
     try {
       const Op = Sequelize.Op;
       const user = await this.findOne({
-        attributes: { exclude: ["password", "createdAt", "updatedAt"] },
+        attributes: { exclude: ["createdAt", "updatedAt"] },
         where: { emailAddress: { [Op.like]: email } }
       });
       return user;
