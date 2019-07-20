@@ -16,5 +16,12 @@ module.exports = (sequelize, DataTypes) => {
       foreignKey: "userId"
     });
   };
+
+  User.getUserByEmail = async email =>
+    await this.findOne({
+      attributes: { exclude: ["password", "createdAt", "updatedAt"] },
+      where: { emailAdress: email }
+    });
+
   return User;
 };
