@@ -63,5 +63,3 @@ typings/
 # SQLite database file
 *.db
 
-# sequelize config
-config/config.json
