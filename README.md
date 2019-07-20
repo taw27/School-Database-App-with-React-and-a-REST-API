@@ -3,7 +3,7 @@
 ## Table of Contents
 
 - [Description](#description)
-- [Overview of Project Files Provided by Tree House](#overview)
+- [Overview of Project Files Provided by Tree House](#overview-of-project-files-by-tree-house)
 - [Running Instructions](#running-instructions)
 
 ## Description
