@@ -7,6 +7,8 @@ const {
   createErrorByStatus
 } = require("../utilityFunctions");
 const { User } = require("../models/index.js");
+const { userValidations } = require("../validation");
+const { validationResult } = require("express-validator");
 
 const authenticateUser = asyncErrorHandler(async (req, res, next) => {
   const credentials = auth(req);
@@ -38,6 +40,20 @@ router.get(
       lastName: req.currentUser.get("lastName"),
       emailAddress: req.currentUser.get("emailAddress")
     });
+  })
+);
+
+router.post(
+  "/",
+  userValidations,
+  asyncErrorHandler(async (req, res, next) => {
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+      return next({
+        status: 400,
+        mesage: errors.array().map(error => error.mesage)
+      });
+    }
   })
 );
 
