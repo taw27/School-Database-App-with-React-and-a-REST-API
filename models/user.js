@@ -93,5 +93,14 @@ module.exports = (sequelize, DataTypes) => {
     }
   };
 
+  User.userEmailExists = async function(email) {
+    try {
+      const user = await getUserByEmail(email);
+      return user ? true : false;
+    } catch (err) {
+      throw err;
+    }
+  };
+
   return User;
 };
