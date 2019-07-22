@@ -95,7 +95,7 @@ module.exports = (sequelize, DataTypes) => {
 
   User.userEmailExists = async function(email) {
     try {
-      const user = await getUserByEmail(email);
+      const user = await this.getUserByEmail(email);
       return user ? true : false;
     } catch (err) {
       throw err;
