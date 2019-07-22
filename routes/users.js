@@ -2,9 +2,11 @@ const express = require("express");
 const router = express.Router();
 const auth = require("basic-auth");
 const bcryptjs = require("bcryptjs");
-const asyncErrorHandler = require("../utilityFunctions").asyncErrorHandler;
-const createErrorByStatus = require("../utilityFunctions").createErrorByStatus;
-const User = require("../models/index.js").User;
+const {
+  asyncErrorHandler,
+  createErrorByStatus
+} = require("../utilityFunctions");
+const { User } = require("../models/index.js");
 
 const authenticateUser = asyncErrorHandler(async (req, res, next) => {
   const credentials = auth(req);
