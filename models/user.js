@@ -102,5 +102,27 @@ module.exports = (sequelize, DataTypes) => {
     }
   };
 
+  User.createNewUser = async function(
+    firstName,
+    lastName,
+    emailAddress,
+    hashedPassword
+  ) {
+    try {
+      const [created] = await this.findOrCreate({
+        where: {
+          firstName,
+          lastName,
+          emailAddress,
+          password: hashedPassword
+        }
+      });
+
+      return created;
+    } catch (err) {
+      throw err;
+    }
+  };
+
   return User;
 };
