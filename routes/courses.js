@@ -107,4 +107,32 @@ router.put(
   })
 );
 
+router.delete(
+  "/:courseId",
+  asyncErrorHandler(authenticateUser),
+  asyncErrorHandler(async (req, res, next) => {
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+      return next({
+        status: 400,
+        message: errors.array().map(error => error.msg)
+      });
+    } else {
+      const userId = req.currentUser.get("id");
+      const courseId = parseInt(req.params.courseId);
+      const course = await Course.getCourseInfoById(courseId);
+      if (course) {
+        const courseDeleted = await Course.deleteCourseById(courseId, userId);
+        return courseDeleted
+          ? res.status(204).json({})
+          : next(createErrorByStatus(401));
+      } else {
+        const err = new Error("Course does not exist");
+        err.status = 400;
+        return next(400);
+      }
+    }
+  })
+);
+
 module.exports = router;

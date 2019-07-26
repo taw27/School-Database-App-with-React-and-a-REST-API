@@ -145,5 +145,24 @@ module.exports = (sequelize, DataTypes) => {
     }
   };
 
+  Course.deleteCourseById = async function(courseId, userId) {
+    try {
+      const course = await this.findOne({ where: { id: courseId, userId } });
+      if (course) {
+        let courseDeleted = false;
+
+        await course.destroy({ force: true }).then(() => {
+          courseDeleted = true;
+        });
+
+        return courseDeleted;
+      } else {
+        return false;
+      }
+    } catch (err) {
+      throw err;
+    }
+  };
+
   return Course;
 };
