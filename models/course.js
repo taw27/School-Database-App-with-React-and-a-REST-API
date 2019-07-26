@@ -21,7 +21,8 @@ module.exports = (sequelize, DataTypes) => {
             args: [true],
             msg: "title is required"
           }
-        }},
+        }
+      },
       description: {
         type: DataTypes.TEXT,
         allowNull: false,
@@ -105,7 +106,5 @@ module.exports = (sequelize, DataTypes) => {
     }
   };
 
-  return User;
-  };
   return Course;
 };
