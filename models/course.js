@@ -59,6 +59,7 @@ module.exports = (sequelize, DataTypes) => {
 
     Course.getCoursesInfo = async function() {
       return await this.findAll({
+        attributes: { exclude: ["createdAt", "updatedAt"] },
         include: [
           {
             model: User,
@@ -70,6 +71,7 @@ module.exports = (sequelize, DataTypes) => {
 
     Course.getCourseInfoById = async function(courseId) {
       return await this.findOne({
+        attributes: { exclude: ["createdAt", "updatedAt"] },
         include: [
           {
             model: User,
