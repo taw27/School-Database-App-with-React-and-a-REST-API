@@ -39,7 +39,7 @@ router.get(
 router.post(
   "/",
   courseValidations,
-  authenticateUser,
+  asyncErrorHandler(authenticateUser),
   asyncErrorHandler(async (req, res, next) => {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
