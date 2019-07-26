@@ -1,5 +1,6 @@
 "use strict";
 module.exports = (sequelize, DataTypes) => {
+  const User = sequelize.import("./user");
   const Course = sequelize.define(
     "Course",
     {
@@ -30,14 +31,28 @@ module.exports = (sequelize, DataTypes) => {
       }
     });
 
-    Course.getCoursesWithUser = async function() {
+    Course.getCoursesInfo = async function() {
       return await this.findAll({
         include: [
           {
-            model: this.sequelize.import("./user"),
+            model: User,
             attributes: ["id", "firstName", "lastName"]
           }
         ]
+      });
+    };
+
+    Course.getCourseInfoById = async function(courseId) {
+      return await this.findOne({
+        include: [
+          {
+            model: User,
+            attributes: ["id", "firstName", "lastName"]
+          }
+        ],
+        where: {
+          id: courseId
+        }
       });
     };
   };
