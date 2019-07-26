@@ -18,6 +18,9 @@ const createErrorByStatus = statusCode => {
     case 401:
       err = new Error("Access Denied");
       break;
+    case 403:
+      err = new Error("Forbidden");
+      break;
     default:
       statusCode = 500;
       err = new Error("Server Error");

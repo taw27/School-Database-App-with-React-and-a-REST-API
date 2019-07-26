@@ -97,7 +97,7 @@ router.put(
         );
         return courseUpdated
           ? res.status(204).json({})
-          : next(createErrorByStatus(401));
+          : next(createErrorByStatus(403));
       } else {
         const err = new Error("Course does not exist");
         err.status = 400;
@@ -125,7 +125,7 @@ router.delete(
         const courseDeleted = await Course.deleteCourseById(courseId, userId);
         return courseDeleted
           ? res.status(204).json({})
-          : next(createErrorByStatus(401));
+          : next(createErrorByStatus(403));
       } else {
         const err = new Error("Course does not exist");
         err.status = 400;
