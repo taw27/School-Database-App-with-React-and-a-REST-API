@@ -49,7 +49,7 @@ router.get(
   "/",
   asyncErrorHandler(authenticateUser),
   asyncErrorHandler(async (req, res) => {
-    return res.status(201).json({
+    return res.status(200).json({
       userId: req.currentUser.get("id"),
       firstName: req.currentUser.get("firstName"),
       lastName: req.currentUser.get("lastName"),
