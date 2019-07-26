@@ -82,15 +82,15 @@ module.exports = (sequelize, DataTypes) => {
       });
     };
   };
-  Course.createCourse = async function({
+  Course.createCourse = async function(
     title,
     description,
     estimatedTime,
     materialsNeeded,
     userId
-  }) {
+  ) {
     try {
-      const [course, created] = await this.findOrCreate({
+      const [course] = await this.findOrCreate({
         where: {
           title,
           description,
@@ -100,7 +100,7 @@ module.exports = (sequelize, DataTypes) => {
         }
       });
 
-      return course && created;
+      return course;
     } catch (err) {
       throw err;
     }
