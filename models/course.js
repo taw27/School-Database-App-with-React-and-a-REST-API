@@ -90,7 +90,7 @@ module.exports = (sequelize, DataTypes) => {
     userId
   }) {
     try {
-      const [created] = await this.findOrCreate({
+      const [course, created] = await this.findOrCreate({
         where: {
           title,
           description,
@@ -100,7 +100,7 @@ module.exports = (sequelize, DataTypes) => {
         }
       });
 
-      return created;
+      return course && created;
     } catch (err) {
       throw err;
     }
