@@ -64,7 +64,7 @@ router.post(
       } else {
         const err = new Error("Course already exists");
         err.status = 400;
-        return next(400);
+        return next(err);
       }
     }
   })
@@ -101,7 +101,7 @@ router.put(
       } else {
         const err = new Error("Course does not exist");
         err.status = 400;
-        return next(400);
+        return next(err);
       }
     }
   })
@@ -129,7 +129,7 @@ router.delete(
       } else {
         const err = new Error("Course does not exist");
         err.status = 400;
-        return next(400);
+        return next(err);
       }
     }
   })
