@@ -1,3 +1,7 @@
+const auth = require("basic-auth");
+const bcryptjs = require("bcryptjs");
+const { User } = require("./models/index.js");
+
 const asyncErrorHandler = cb => {
   return async (req, res, next) => {
     try {
@@ -23,7 +27,27 @@ const createErrorByStatus = statusCode => {
   return err;
 };
 
+const authenticateUser = asyncErrorHandler(async (req, res, next) => {
+  const credentials = auth(req);
+  let accessDenied = true;
+  if (credentials) {
+    const user = await User.getUserByEmail(credentials.name);
+    if (user) {
+      const authenticated = await bcryptjs.compare(
+        credentials.pass,
+        user.get("password")
+      );
+      if (authenticated) {
+        accessDenied = false;
+        req.currentUser = user;
+      }
+    }
+  }
+  return accessDenied ? next(createErrorByStatus(401)) : next();
+});
+
 module.exports = {
   asyncErrorHandler,
-  createErrorByStatus
+  createErrorByStatus,
+  authenticateUser
 };

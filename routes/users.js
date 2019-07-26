@@ -1,11 +1,7 @@
 const express = require("express");
 const router = express.Router();
-const auth = require("basic-auth");
 const bcryptjs = require("bcryptjs");
-const {
-  asyncErrorHandler,
-  createErrorByStatus
-} = require("../utilityFunctions");
+const { asyncErrorHandler, authenticateUser } = require("../utilityFunctions");
 const { User } = require("../models/index.js");
 const { check, validationResult } = require("express-validator");
 
@@ -32,25 +28,6 @@ const userValidations = [
     .exists({ checkNull: true, checkFalsy: true })
     .withMessage("passWord is required")
 ];
-
-const authenticateUser = asyncErrorHandler(async (req, res, next) => {
-  const credentials = auth(req);
-  let accessDenied = true;
-  if (credentials) {
-    const user = await User.getUserByEmail(credentials.name);
-    if (user) {
-      const authenticated = await bcryptjs.compare(
-        credentials.pass,
-        user.get("password")
-      );
-      if (authenticated) {
-        accessDenied = false;
-        req.currentUser = user;
-      }
-    }
-  }
-  return accessDenied ? next(createErrorByStatus(401)) : next();
-});
 
 /*  
   from https://stackoverflow.com/questions/48799894/trying-to-hash-a-password-using-bcrypt-inside-an-async-function
