@@ -82,7 +82,7 @@ module.exports = (sequelize, DataTypes) => {
       });
     };
   };
-  Course.createNewCourse = async function({
+  Course.createCourse = async function({
     title,
     description,
     estimatedTime,
