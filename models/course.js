@@ -9,8 +9,33 @@ module.exports = (sequelize, DataTypes) => {
         primaryKey: true,
         autoIncrement: true
       },
-      title: DataTypes.STRING,
-      description: DataTypes.TEXT,
+      title: {
+        type: DataTypes.STRING,
+        allowNull: false,
+        validate: {
+          notNull: {
+            args: [true],
+            msg: "title is required"
+          },
+          notEmpty: {
+            args: [true],
+            msg: "title is required"
+          }
+        }},
+      description: {
+        type: DataTypes.TEXT,
+        allowNull: false,
+        validate: {
+          notNull: {
+            args: [true],
+            msg: "description is required"
+          },
+          notEmpty: {
+            args: [true],
+            msg: "description is required"
+          }
+        }
+      },
       estimatedTime: {
         type: DataTypes.STRING,
         allowNull: true
@@ -55,6 +80,32 @@ module.exports = (sequelize, DataTypes) => {
         }
       });
     };
+  };
+  Course.createNewCourse = async function({
+    title,
+    description,
+    estimatedTime,
+    materialsNeeded,
+    userId
+  }) {
+    try {
+      const [created] = await this.findOrCreate({
+        where: {
+          title,
+          description,
+          estimatedTime,
+          materialsNeeded,
+          userId
+        }
+      });
+
+      return created;
+    } catch (err) {
+      throw err;
+    }
+  };
+
+  return User;
   };
   return Course;
 };

@@ -7,6 +7,15 @@ const {
 const { Course, User } = require("../models/index.js");
 const { check, validationResult } = require("express-validator");
 
+const courseValidator = [
+  check("title")
+    .exists({ checkNull: true, checkFalsy: true })
+    .withMessage("title is required"),
+  check("description")
+    .exists({ checkNull: true, checkFalsy: true })
+    .withMessage("description is required")
+];
+
 router.get(
   "/",
   asyncErrorHandler(async (req, res) => {
