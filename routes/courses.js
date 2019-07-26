@@ -11,14 +11,7 @@ router.get(
   "/",
   asyncErrorHandler(async (req, res) => {
     return res.status(200).json({
-      courses: await Course.findAll({
-        include: [
-          {
-            model: User,
-            attributes: ["id", "firstName", "lastName"]
-          }
-        ]
-      })
+      courses: await Course.getCoursesWithUser()
     });
   })
 );

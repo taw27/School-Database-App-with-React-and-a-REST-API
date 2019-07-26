@@ -29,6 +29,17 @@ module.exports = (sequelize, DataTypes) => {
         allowNull: false
       }
     });
+
+    Course.getCoursesWithUser = async function() {
+      return await this.findAll({
+        include: [
+          {
+            model: this.sequelize.import("./user"),
+            attributes: ["id", "firstName", "lastName"]
+          }
+        ]
+      });
+    };
   };
   return Course;
 };
