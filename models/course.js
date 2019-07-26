@@ -106,5 +106,42 @@ module.exports = (sequelize, DataTypes) => {
     }
   };
 
+  Course.updateCourseById = async function(
+    courseId,
+    title,
+    description,
+    estimatedTime,
+    materialsNeeded,
+    userId
+  ) {
+    try {
+      const course = await this.findOne({ where: { id: courseId, userId } });
+      if (course) {
+        let courseUpdated = false;
+        let updateFields = { title, description };
+
+        if (description !== undefined && typeof description === "string")
+          updateFields["description"] = description;
+        if (estimatedTime !== undefined && typeof estimatedTime === "string")
+          updateFields["estimatedTime"] = estimatedTime;
+        if (
+          materialsNeeded !== undefined &&
+          typeof materialsNeeded === "string"
+        )
+          updateFields["materialsNeeded"] = materialsNeeded;
+
+        await course.update(updateFields).then(() => {
+          courseUpdated = true;
+        });
+
+        return courseUpdated;
+      } else {
+        return false;
+      }
+    } catch (err) {
+      throw err;
+    }
+  };
+
   return Course;
 };
