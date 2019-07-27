@@ -1,8 +1,10 @@
 "use strict";
-
+// import modules
 const Sequelize = require("sequelize");
 
+// exports User model
 module.exports = (sequelize, DataTypes) => {
+  // defines Usee model
   const User = sequelize.define(
     "User",
     {
@@ -70,6 +72,8 @@ module.exports = (sequelize, DataTypes) => {
     },
     {}
   );
+
+  // creates association with Course model
   User.associate = function(models) {
     // associations can be defined here
     models.User.hasMany(models.Course, {
@@ -80,6 +84,7 @@ module.exports = (sequelize, DataTypes) => {
     });
   };
 
+  // returns user info by email
   User.getUserByEmail = async function(email) {
     try {
       const Op = Sequelize.Op;
@@ -93,6 +98,7 @@ module.exports = (sequelize, DataTypes) => {
     }
   };
 
+  // returns true if the user email exists in the database
   User.userEmailExists = async function(email) {
     try {
       const user = await this.getUserByEmail(email);
@@ -102,6 +108,7 @@ module.exports = (sequelize, DataTypes) => {
     }
   };
 
+  // creates a new user if it does not exist
   User.createNewUser = async function(
     firstName,
     lastName,

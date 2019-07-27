@@ -17,6 +17,7 @@ const app = express();
 app.use(morgan("dev"));
 app.use(express.json());
 
+// use router for api route
 app.use("/api", router);
 
 // setup a friendly greeting for the root route
@@ -49,8 +50,7 @@ app.use((err, req, res, next) => {
 // set our port
 app.set("port", process.env.PORT || 5000);
 
-// start listening on our port
-
+// authenticate db connection, then sync, then start server
 db.sequelize
   .authenticate()
   .then(() => {

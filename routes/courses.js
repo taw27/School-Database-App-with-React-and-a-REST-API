@@ -1,3 +1,6 @@
+// handles requests to /api/courses route
+
+// Loads modules
 const express = require("express");
 const router = express.Router();
 const {
@@ -8,6 +11,7 @@ const {
 const { Course } = require("../models/index.js");
 const { check, validationResult } = require("express-validator");
 
+// Intitialises array with course validations
 const courseValidations = [
   check("title")
     .exists({ checkNull: true, checkFalsy: true })
@@ -17,6 +21,7 @@ const courseValidations = [
     .withMessage("description is required")
 ];
 
+// Hadles request to / route and responds with all courses info
 router.get(
   "/",
   asyncErrorHandler(async (req, res) => {
@@ -26,6 +31,7 @@ router.get(
   })
 );
 
+// handles get requests to /:coursId route and responds with the course info if it exists, else responds with error
 router.get(
   "/:courseId",
   asyncErrorHandler(async (req, res) => {
@@ -36,6 +42,10 @@ router.get(
   })
 );
 
+/* 
+  handles post requests. Validates tthe data, authenticates the user and adds the new course under the
+  the authenticated user. Responds with not data if create is successful else responds with the corresponding error
+ */
 router.post(
   "/",
   courseValidations,
@@ -70,6 +80,10 @@ router.post(
   })
 );
 
+/* 
+  handles post requests. Validates tthe data, authenticates the user and updates the course if the course belongs to the
+  the authenticated user. Responds with no data if update is successful else responds with the corresponding error
+ */
 router.put(
   "/:courseId",
   courseValidations,
@@ -107,6 +121,10 @@ router.put(
   })
 );
 
+/* 
+  handles delete requests. Authenticates the user and deletes the course if the course belongs to the
+  the authenticated user. Responds with no data if delete is successful else responds with the corresponding error
+ */
 router.delete(
   "/:courseId",
   asyncErrorHandler(authenticateUser),
@@ -135,4 +153,5 @@ router.delete(
   })
 );
 
+// exports router
 module.exports = router;
