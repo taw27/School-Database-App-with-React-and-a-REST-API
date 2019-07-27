@@ -34,11 +34,10 @@ router.get(
 // handles get requests to /:coursId route and responds with the course info if it exists, else responds with error
 router.get(
   "/:courseId",
-  asyncErrorHandler(async (req, res) => {
+  asyncErrorHandler(async (req, res, next) => {
     const bookId = parseInt(req.params.courseId);
-    return res.status(200).json({
-      course: await Course.getCourseInfoById(bookId)
-    });
+    const course = await Course.getCourseInfoById(bookId);
+    return course ? res.status(200).json({ course }) : next();
   })
 );
 
@@ -113,9 +112,7 @@ router.put(
           ? res.status(204).json({})
           : next(createErrorByStatus(403));
       } else {
-        const err = new Error("Course does not exist");
-        err.status = 400;
-        return next(err);
+        return next();
       }
     }
   })
@@ -145,9 +142,7 @@ router.delete(
           ? res.status(204).json({})
           : next(createErrorByStatus(403));
       } else {
-        const err = new Error("Course does not exist");
-        err.status = 400;
-        return next(err);
+        return next();
       }
     }
   })
