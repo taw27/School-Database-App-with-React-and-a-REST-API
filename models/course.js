@@ -93,7 +93,7 @@ module.exports = (sequelize, DataTypes) => {
     };
   };
 
-  // creates a new course if it does not exist and returns it
+  // creates a new course if it does not exist and returns an object containing it and true if created
   Course.createCourse = async function(
     title,
     description,
@@ -102,7 +102,7 @@ module.exports = (sequelize, DataTypes) => {
     userId
   ) {
     try {
-      const [course] = await this.findOrCreate({
+      const [course, created] = await this.findOrCreate({
         where: {
           title,
           description,
@@ -112,7 +112,7 @@ module.exports = (sequelize, DataTypes) => {
         }
       });
 
-      return course;
+      return { course, created };
     } catch (err) {
       throw err;
     }

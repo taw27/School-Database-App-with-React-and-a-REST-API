@@ -60,7 +60,7 @@ router.post(
     } else {
       const { title, description, estimatedTime, materialsNeeded } = req.body;
       const userId = req.currentUser.get("id");
-      const course = await Course.createCourse(
+      const { course, created } = await Course.createCourse(
         title,
         description,
         estimatedTime ? estimatedTime : "",
@@ -68,7 +68,7 @@ router.post(
         userId
       );
 
-      if (course) {
+      if (created) {
         res.header({ Location: `/courses/${course.get("id")}` });
         return res.status(201).json({});
       } else {
