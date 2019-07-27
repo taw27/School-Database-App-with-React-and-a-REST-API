@@ -108,7 +108,7 @@ module.exports = (sequelize, DataTypes) => {
     }
   };
 
-  // creates a new user if it does not exist
+  // creates a new user if it does not exist and returns true if created
   User.createNewUser = async function(
     firstName,
     lastName,
