@@ -20,7 +20,7 @@ Key technologies used: React.js, React router, Node.js, Express.js, bcryptjs, Ex
 1. Download or clone the repository
 2. Open Terminal in the project directory
 3. Run `npm install` to install dependencies
-4. Run `npm run seed` to seed the SQLite database
+4. Run `npm run seed-server` to seed the SQLite database
 5. Run `npm run dev` to start the full application
 6. Visit [http://localhost:3000/](http://localhost:3000)
 
