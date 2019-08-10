@@ -5,6 +5,7 @@ const express = require("express");
 const morgan = require("morgan");
 const db = require("./models");
 const router = require("./routes/index.js");
+const cors = require("cors");
 
 // variable to enable global error logging
 const enableGlobalErrorLogging =
@@ -14,6 +15,7 @@ const enableGlobalErrorLogging =
 const app = express();
 
 // setup morgan which gives us http request logging
+app.use(cors());
 app.use(morgan("dev"));
 app.use(express.json());
 
