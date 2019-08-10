@@ -1,0 +1,19 @@
+{
+  "name": "full_stack_app_with_react_and_a_rest_api",
+  "version": "1.0.0",
+  "description": "fullstack js app",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "postinstall": "concurrently \"npm install --prefix api\" \"npm install --prefix client\"",
+    "server": "npm start --prefix api",
+    "client": "npm start --prefix client",
+    "seed-server": "npm run seed --prefix api",
+    "dev": "concurrently \"npm run server\" \"npm run client\""
+  },
+  "author": "Tawshif",
+  "license": "ISC",
+  "dependencies": {
+    "concurrently": "^4.1.1"
+  }
+}
