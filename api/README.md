@@ -1,4 +1,4 @@
-# REST API (Tree house FSJS unit-09)
+# REST API
 
 ## Table of Contents
 
@@ -28,11 +28,10 @@ Some of the important files provided by Tree House to aid in the project has bee
 
 ## Running Instructions
 
-1. Download or clone the repository
-2. Open Terminal in the project directory
-3. Run `npm install` to install dependencies
-4. Run `npm run seed` to seed the SQLite database
-5. Run `npm start` to start the node application
-6. Use Postman to test the rest api routes at [http://localhost:5000/](http://localhost:5000)
+1. Open Terminal in the project directory
+2. Run `npm install` to install dependencies
+3. Run `npm run seed` to seed the SQLite database
+4. Run `npm start` to start the node application
+5. Use Postman to test the rest api routes at [http://localhost:5000/](http://localhost:5000)
 
 **_Note: Requires Node.js and npm_**
