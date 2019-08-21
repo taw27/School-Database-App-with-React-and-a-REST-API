@@ -14,7 +14,8 @@
   "author": "Tawshif",
   "license": "ISC",
   "dependencies": {
-    "concurrently": "^4.1.1"
+    "concurrently": "^4.1.1",
+    "prop-types": "^15.7.2"
   },
   "devDependencies": {
     "eslint-plugin-react": "^7.14.3"
