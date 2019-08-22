@@ -19,7 +19,7 @@ export default class Data {
 
     if (requiresAuth) {
       const encodedCredentials = btoa(
-        `${credentials.userName}:${credentials.password}`
+        `${credentials.email}:${credentials.password}`
       );
       options.headers["Authorization"] = `Basic ${encodedCredentials}`;
     }
@@ -31,6 +31,37 @@ export default class Data {
     const res = await this.api("/courses");
     if (res.status === 200) {
       return await res.json().courses;
+    } else {
+      throw new Error();
+    }
+  }
+
+  async getUser(email, password) {
+    const res = await this.api(
+      "/users",
+      "GET",
+      null,
+      { userName: email, password },
+      true
+    );
+
+    if (res.status === 200) {
+      return await res.json().users;
+    } else if (res.status === 401) {
+      return null;
+    } else {
+      throw new Error();
+    }
+  }
+
+  async createUser(firstName, lastName, email, passWord) {
+    const body = { firstName, lastName, email, passWord };
+    const res = await this.api("/users", "POST", body);
+
+    if (res.status === 201) {
+      return await { created: true };
+    } else if (res.status === 400) {
+      return { created: false, errors: await res.json().error };
     } else {
       throw new Error();
     }
