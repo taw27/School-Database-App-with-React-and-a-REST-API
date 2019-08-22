@@ -7,10 +7,10 @@ module.exports = {
   parserOptions: {
     ecmaFeatures: {
       experimentalObjectRestSpread: true,
-      jsx: true,
-      ecmaVersion: 8
+      jsx: true
     },
-    sourceType: "module"
+    sourceType: "module",
+    ecmaVersion: 8
   },
   plugins: ["react"],
   rules: {
