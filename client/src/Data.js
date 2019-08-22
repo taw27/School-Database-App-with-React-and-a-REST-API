@@ -26,4 +26,13 @@ export default class Data {
 
     return fetch(path, options);
   }
+
+  async getCourses() {
+    const res = await this.api("/courses");
+    if (res.status === 200) {
+      return await res.json().courses;
+    } else {
+      throw new Error();
+    }
+  }
 }
