@@ -4,8 +4,8 @@ import PropTypes from "prop-types";
 
 const CourseItem = ({ id, title }) => {
   return (
-    <div className="grid-33" to={`/courses/${id}`}>
-      <Link className="course--module course--link">
+    <div className="grid-33">
+      <Link className="course--module course--link" to={`/courses/${id}`}>
         <h4 className="course--label">Course</h4>
         <h3 className="course--title"> {title}</h3>
       </Link>
