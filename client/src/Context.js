@@ -9,7 +9,7 @@ export const Provider = ({ children }) => {
   const [authenticatedUser, setAuthenticatedUser] = useState(
     Cookies.getJSON("authenticatedUser") || null
   );
-  const data = new data();
+  const data = new Data();
 
   const signIn = async (email, passWord) => {
     const user = await data.getUser(email, passWord);
