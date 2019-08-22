@@ -1,9 +1,9 @@
-import { React, createContext, useContext, useState } from "react";
+import React, { createContext, useContext, useState } from "react";
 import Data from "./Data";
 import Cookies from "js-cookie";
 import PropTypes from "prop-types";
 
-export const context = createContext();
+export const Context = createContext();
 
 export const Provider = ({ children }) => {
   const [authenticatedUser, setAuthenticatedUser] = useState(
@@ -38,10 +38,10 @@ export const Provider = ({ children }) => {
       signOut
     }
   };
-  return <context.Provider value={value}>{children}</context.Provider>;
+  return <Context.Provider value={value}>{children}</Context.Provider>;
 };
 
-const useContextValue = () => useContext(context);
+const useContextValue = () => useContext(Context);
 
 export default useContextValue;
 
