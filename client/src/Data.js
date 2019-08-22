@@ -28,9 +28,11 @@ export default class Data {
   }
 
   async getCourses() {
+    console.log("here");
     const res = await this.api("/courses");
+    const data = await res.json();
     if (res.status === 200) {
-      return await res.json().courses;
+      return await data.courses;
     } else {
       throw new Error();
     }
@@ -61,7 +63,8 @@ export default class Data {
     if (res.status === 201) {
       return await { created: true };
     } else if (res.status === 400) {
-      return { created: false, errors: await res.json().error };
+      const data = await data.json();
+      return { created: false, errors: data.error };
     } else {
       throw new Error();
     }
