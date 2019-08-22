@@ -17,13 +17,22 @@ const Header = () => {
                 {`${authenticatedUser.firstName} ${authenticatedUser.lastName}`}
               </span>
             </nav>
-            <Link to="/signout"> Sign Out</Link>
+            <Link className="signout" to="/signout">
+              {" "}
+              Sign Out
+            </Link>
           </Fragment>
         ) : (
-          <Fragment>
-            <Link to="/signin"> Sign In</Link>
-            <Link to="/signup"> Sign Up</Link>
-          </Fragment>
+          <nav>
+            <Link className="signin" to="/signin">
+              {" "}
+              Sign In
+            </Link>
+            <Link className="signup" to="/signup">
+              {" "}
+              Sign Up
+            </Link>
+          </nav>
         )}
       </div>
     </div>
