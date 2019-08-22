@@ -46,7 +46,7 @@ export default class Data {
     );
 
     if (res.status === 200) {
-      return await res.json().users;
+      return await res.json();
     } else if (res.status === 401) {
       return null;
     } else {
