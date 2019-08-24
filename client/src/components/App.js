@@ -6,7 +6,9 @@ const App = () => {
   return (
     <div>
       <Header />
-      <Courses />
+      <div className="bounds">
+        <Courses />
+      </div>
     </div>
   );
 };

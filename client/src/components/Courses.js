@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, Fragment } from "react";
 import CourseItem from "./CourseItem";
 import useContextValue from "../Context";
 
@@ -16,11 +16,11 @@ const Courses = () => {
   }, []);
 
   return (
-    <div className="bounds">
+    <Fragment>
       {courses.map(course => (
         <CourseItem id={course.id} key={course.id} title={course.title} />
       ))}
-    </div>
+    </Fragment>
   );
 };
 
