@@ -42,7 +42,7 @@ export default class Data {
       "/users",
       "GET",
       null,
-      { userName: email, password },
+      { email, password },
       true
     );
 
