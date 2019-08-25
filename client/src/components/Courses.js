@@ -13,7 +13,7 @@ const Courses = () => {
         setCourses(courses);
       })
       .catch(() => setCourses([]));
-  }, []);
+  }, [data]);
 
   return (
     <Fragment>
