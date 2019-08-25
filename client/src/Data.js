@@ -28,7 +28,6 @@ export default class Data {
   }
 
   async getCourses() {
-    console.log("here");
     const res = await this.api("/courses");
     const data = await res.json();
     if (res.status === 200) {
@@ -43,7 +42,7 @@ export default class Data {
       "/users",
       "GET",
       null,
-      { userName: email, password },
+      { email, password },
       true
     );
 
@@ -56,8 +55,8 @@ export default class Data {
     }
   }
 
-  async createUser(firstName, lastName, email, passWord) {
-    const body = { firstName, lastName, email, passWord };
+  async createUser(firstName, lastName, email, password) {
+    const body = { firstName, lastName, email, password };
     const res = await this.api("/users", "POST", body);
 
     if (res.status === 201) {
