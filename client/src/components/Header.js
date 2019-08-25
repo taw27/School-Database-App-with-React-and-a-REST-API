@@ -9,19 +9,17 @@ const Header = () => {
       <div className="bounds">
         <h1 className="header--logo"> Courses</h1>
         {authenticatedUser ? (
-          <Fragment>
-            <nav>
-              <span>
-                {" "}
-                Welcome{" "}
-                {`${authenticatedUser.firstName} ${authenticatedUser.lastName}`}
-              </span>
-            </nav>
+          <nav>
+            <span>
+              {" "}
+              Welcome{" "}
+              {`${authenticatedUser.firstName} ${authenticatedUser.lastName}`}
+            </span>
             <Link className="signout" to="/signout">
               {" "}
               Sign Out
             </Link>
-          </Fragment>
+          </nav>
         ) : (
           <nav>
             <Link className="signin" to="/signin">
