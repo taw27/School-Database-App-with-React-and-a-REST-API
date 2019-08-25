@@ -17,11 +17,11 @@ const UserSignIn = ({ location, history }) => {
   };
 
   const submit = async () => {
-    const { from } = location.state || { from: { pathName: "/" } };
+    const { from } = location.state || { from: "/" };
 
     try {
       const { emailAddress, password } = state;
-      const user = actions.signIn(emailAddress, password);
+      const user = await actions.signIn(emailAddress, password);
 
       if (user === null) {
         const errors = ["emaill adresss or password incorrect"];
