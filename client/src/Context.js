@@ -11,10 +11,10 @@ export const Provider = ({ children }) => {
   );
   const data = new Data();
 
-  const signIn = async (email, passWord) => {
-    const user = await data.getUser(email, passWord);
+  const signIn = async (email, password) => {
+    const user = await data.getUser(email, password);
     if (user !== null) {
-      setAuthenticatedUser({ ...user, passWord });
+      setAuthenticatedUser({ ...user, password });
       const cookieOptions = {
         expires: 1 // 1 day
       };
