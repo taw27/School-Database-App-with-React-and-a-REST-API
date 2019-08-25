@@ -19,7 +19,9 @@ export const Provider = ({ children }) => {
         expires: 1 // 1 day
       };
       // TODO: change to token based authentication later
-      Cookies.set("authenticatedUser", JSON.stringify(user), { cookieOptions });
+      // Cookies.set("authenticatedUser", JSON.stringify(""), {
+      //   cookieOptions
+      // });
     }
 
     return user;
