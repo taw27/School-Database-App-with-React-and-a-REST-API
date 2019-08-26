@@ -2,6 +2,7 @@ import React from "react";
 import Header from "./Header";
 import Courses from "./Courses";
 import UserSignIn from "./UserSignIn.js";
+import UserSignUp from "./UserSignUp";
 import { Switch, Route } from "react-router-dom";
 
 const App = () => {
@@ -12,6 +13,7 @@ const App = () => {
         <Switch>
           <Route exact path="/" component={Courses} />
           <Route exact path="/signin" component={UserSignIn} />
+          <Route exact path="/signup" component={UserSignUp} />
         </Switch>
       </div>
     </div>
