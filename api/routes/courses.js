@@ -73,7 +73,7 @@ router.post(
       } else {
         const err = new Error("Course already exists");
         err.status = 400;
-        return next(err);
+        return next({ status: err.status, message: [err.message] });
       }
     }
   })

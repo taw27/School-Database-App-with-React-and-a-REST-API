@@ -97,7 +97,7 @@ router.post(
       } else {
         const err = new Error("User already exists");
         err.status = 400;
-        return next(400);
+        return next({ status: err.status, message: [err.message] });
       }
     }
   })
