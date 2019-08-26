@@ -60,7 +60,7 @@ export default class Data {
     const res = await this.api("/users", "POST", body);
 
     if (res.status === 201) {
-      return await { created: true };
+      return await { created: true, errors: [] };
     } else if (res.status === 400) {
       const data = await data.json();
       return { created: false, errors: data.error };
