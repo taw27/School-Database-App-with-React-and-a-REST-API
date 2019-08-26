@@ -2,14 +2,15 @@ import React, { Fragment, useState } from "react";
 import useContextValue from "../Context";
 import UserForm from "./UserForm";
 
-const UserSignIn = () => {
+const UserSignIn = ({history}) => {
   const { data } = useContextValue();
   const { state, setState } = useState({
     firstName: "",
     lastName: "",
     emailAddress: "",
     password: "",
-    confirmPassword: ""
+    confirmPassword: "",
+    errors:[]
   });
   const change = e => {
     const name = e.target.name;
@@ -17,6 +18,10 @@ const UserSignIn = () => {
 
     setState(state => ({...state, [name]: value});
   };
+
+  const cancel = () => {
+      history.push("/");
+  }
 
   return (
     <UserForm
@@ -73,6 +78,7 @@ const UserSignIn = () => {
               placeholder="Confirm Password"
               value={state.confirmPassword}
               change={change}
+              cance={cancel}
             />
           </div>
         </Fragment>
