@@ -55,8 +55,8 @@ export default class Data {
     }
   }
 
-  async createUser(firstName, lastName, email, password) {
-    const body = { firstName, lastName, email, password };
+  async createUser(firstName, lastName, emailAddress, password) {
+    const body = { firstName, lastName, emailAddress, password };
     const res = await this.api("/users", "POST", body);
 
     if (res.status === 201) {
