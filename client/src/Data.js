@@ -9,12 +9,12 @@ export default class Data {
     let options = {
       method,
       headers: {
-        "Content-Type": "application/json"
+        "Content-Type": "application/json; charset=utf-8"
       }
     };
 
     if (body !== null) {
-      options.body = body;
+      options.body = JSON.stringify(body);
     }
 
     if (requiresAuth) {
@@ -60,7 +60,7 @@ export default class Data {
     const res = await this.api("/users", "POST", body);
 
     if (res.status === 201) {
-      return await { created: true, errors: [] };
+      return { created: true, errors: [] };
     } else if (res.status === 400) {
       const data = await data.json();
       return { created: false, errors: data.error };
