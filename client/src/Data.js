@@ -62,8 +62,9 @@ export default class Data {
     if (res.status === 201) {
       return { created: true, errors: [] };
     } else if (res.status === 400) {
-      const data = await data.json();
-      return { created: false, errors: data.error };
+      const data = await res.json();
+      const messages = await data.error.message;
+      return { created: false, errors: messages };
     } else {
       throw new Error();
     }
