@@ -1,5 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
+import ValidationErrors from "./ValidationErrors";
 
 const Form = ({
   title,
@@ -23,6 +24,7 @@ const Form = ({
   return (
     <div className="grid-33 centered signin">
       <h1>{title}</h1>
+      {errors.length > 0 ? <ValidationErrors errors={errors} /> : null}
       <div>
         <form onSubmit={handleSubmit}>
           {formElements()}
