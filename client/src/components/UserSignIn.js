@@ -24,7 +24,7 @@ const UserSignIn = ({ location, history }) => {
       const user = await actions.signIn(emailAddress, password);
 
       if (user === null) {
-        const errors = ["emaill adresss or password incorrect"];
+        const errors = ["emaill address or password incorrect"];
         setState({ ...state, errors });
       } else {
         history.push(from);
