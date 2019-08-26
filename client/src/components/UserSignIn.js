@@ -13,7 +13,7 @@ const UserSignIn = ({ location, history }) => {
 
   const change = e => {
     const { name, value } = e.target;
-    setState({ ...state, [name]: value });
+    setState(state => ({ ...state, [name]: value }));
   };
 
   const submit = async () => {
