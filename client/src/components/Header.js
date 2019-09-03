@@ -7,7 +7,10 @@ const Header = () => {
   return (
     <div className="header">
       <div className="bounds">
-        <h1 className="header--logo"> Courses</h1>
+        <h1 className="header--logo">
+          {" "}
+          <Link to="/"> Courses </Link>
+        </h1>
         {authenticatedUser ? (
           <nav>
             <span>
