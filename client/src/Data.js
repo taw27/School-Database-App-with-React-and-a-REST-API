@@ -37,6 +37,18 @@ export default class Data {
     }
   }
 
+  async getCourse(courseId) {
+    const res = await this.api(`/courses/${courseId}`);
+
+    if (res.status === 200) {
+      return await res.json();
+    } else if (res.status === 404) {
+      return null;
+    } else {
+      throw new Error();
+    }
+  }
+
   async getUser(email, password) {
     const res = await this.api(
       "/users",
